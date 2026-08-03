@@ -21,16 +21,16 @@ const Input = ({value, label, updateValue}: InputProps) => {
 }
 
 interface ModalProps {
-    closeModal(): void
+    closeModal():  void;
 }
 
 
-export function CreateModal( {closeModal}: {closeModal(): ModalProps}) {
+export function CreateModal({ closeModal }: ModalProps) {
 
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
-    const { mutate, isSuccess, isLoading } = useFoodDataMutate();
+    const { mutate, isSuccess, isPending } = useFoodDataMutate();
 
 
     const submit = () => {
@@ -60,7 +60,7 @@ export function CreateModal( {closeModal}: {closeModal(): ModalProps}) {
 
                             </form>
                             <button onClick={submit} className="btn-secondary">Postar</button>
-                            {isLoading ? 'postando...': 'postar'}
+                            {isPending ? 'postando...': 'postar'}
             </div>
         </div>
     )
